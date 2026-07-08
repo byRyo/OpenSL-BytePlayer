@@ -5,15 +5,15 @@ const SoundManager_payloadToSound = new NativeFunction(base.add(0x3DCF8), 'point
 
 const customPayload = [];
 
-function playEmbedded() {
+function main() {
     const size = customPayload.length;
-    const ptr = Memory.alloc(size);
+    const sound = Memory.alloc(size);
         
     const buffer = new Uint8Array(customPayload).buffer;
-    ptr.writeByteArray(buffer);
+    sound.writeByteArray(buffer);
 
     const handle = SoundManager_payloadToSound(ptr, size);
     const result = SoundManager_playSoundFromBytes(handle);
     return result;
 }
-playEmbedded();
+main();
