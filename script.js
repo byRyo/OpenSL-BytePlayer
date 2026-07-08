@@ -12,7 +12,7 @@ function main() {
     const buffer = new Uint8Array(customPayload).buffer;
     sound.writeByteArray(buffer);
 
-    const handle = SoundManager_payloadToSound(ptr, size);
+    const handle = SoundManager_payloadToSound(sound, size);
     const result = SoundManager_playSoundFromBytes(handle);
     return result;
 }
